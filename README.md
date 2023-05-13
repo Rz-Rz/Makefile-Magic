@@ -4,36 +4,36 @@ This Makefile compiles a C project with a main program and a bonus program. It a
 I built this project to help me quickstart a makefile on any project in C/C++. I figured out that it could be of help to some people so i decided to share it here. 
 
 ### Variables
-**NAME**: Name of the main executable
-**BONUS_NAME**: Name of the bonus executable
-**SRCS_DIR**, **BONUS_DIR**, **OBJS_DIR**, **BONUS_OBJS_DIR**: Directories for source and object files
-**SRCS**, **BONUS**: Lists of source files for the main and bonus programs
-**OBJS**, **BONUS_OBJS**: Lists of object files for the main and bonus programs
-**CC**: The C compiler to use
-**CFLAGS**: Compilation flags
-**DEBUG**, **FSANITIZE_FLAGS**, **FAST_FLAGS**: Additional flags for debugging, sanitizing, and optimizing the program
-**LIB**: Libraries to link with
-**HEADERS**, **BONUS_HEADERS**: Header files for the main and bonus programs
+**NAME**: Name of the main executable  
+**BONUS_NAME**: Name of the bonus executable  
+**SRCS_DIR**, **BONUS_DIR**, **OBJS_DIR**, **BONUS_OBJS_DIR**: Directories for source and object files  
+**SRCS**, **BONUS**: Lists of source files for the main and bonus programs  
+**OBJS**, **BONUS_OBJS**: Lists of object files for the main and bonus programs  
+**CC**: The C compiler to use  
+**CFLAGS**: Compilation flags  
+**DEBUG**, **FSANITIZE_FLAGS**, **FAST_FLAGS**: Additional flags for debugging, sanitizing, and optimizing the program  
+**LIB**: Libraries to link with  
+**HEADERS**, **BONUS_HEADERS**: Header files for the main and bonus programs  
 ### Main Rules
-**all**: (default rule) Builds both the main and bonus executables
-**$(NAME)**: Builds the main executable
-**$(BONUS_NAME)**, bonus: Builds the bonus executable
-**clean**: Removes all object files and cleans the library
-**fclean**: Removes all executables
-**re**: Forces a complete rebuild
+**all**: (default rule) Builds both the main and bonus executables  
+**$(NAME)**: Builds the main executable  
+**$(BONUS_NAME)**, bonus: Builds the bonus executable  
+**clean**: Removes all object files and cleans the library  
+**fclean**: Removes all executables  
+**re**: Forces a complete rebuild  
 ### Debugging and Profiling Rules
-**valgrind**, **helgrind**, **drd**, **callgrind**: Runs the respective tools on the main executable
-**valgrind_bonus**, **helgrind_bonus**, **drd_bonus**, **callgrind_bonus**: Runs the respective tools on the bonus executable
-**scan-build**, **scan-build_bonus**: Runs scan-build on the main or bonus program
-**debug**: Builds the program with debugging flags
-**fsanitize**, **fsanitize_bonus**: Builds the program with sanitizing flags
-**fast**, **fast_bonus**: Builds the program with optimization flags
+**valgrind**, **helgrind**, **drd**, **callgrind**: Runs the respective tools on the main executable  
+**valgrind_bonus**, **helgrind_bonus**, **drd_bonus**, **callgrind_bonus**: Runs the respective tools on the bonus executable  
+**scan-build**, **scan-build_bonus**: Runs scan-build on the main or bonus program  
+**debug**: Builds the program with debugging flags  
+**fsanitize**, **fsanitize_bonus**: Builds the program with sanitizing flags  
+**fast**, **fast_bonus**: Builds the program with optimization flags  
 ### Other Rules
-**$(OBJS_DIR)**, **$(BONUS_OBJS_DIR)**: Rules to create the directories for object files
-**${OBJS_DIR}/%.o**,** ${BONUS_OBJS_DIR}/%.o**: Pattern rules to build object files from source files
-**${LIB}**: Rule to build the library
-**help**: Displays a help message
-**.PHONY**: Phony rule to avoid conflicts with file names
+**$(OBJS_DIR)**, **$(BONUS_OBJS_DIR)**: Rules to create the directories for object files  
+**${OBJS_DIR}/%.o**,** ${BONUS_OBJS_DIR}/%.o**: Pattern rules to build object files from source files  
+**${LIB}**: Rule to build the library  
+**help**: Displays a help message  
+**.PHONY**: Phony rule to avoid conflicts with file names  
 
 # How to run : 
 The following is for all classic make rules : all, clean, fclean, re.
