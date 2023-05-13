@@ -64,23 +64,23 @@ The -g option alone generates the default level of debugging information. Howeve
 
 The levels are:
 
-**-g0**: Produces no debugging information.
-**-g1**: Produces minimal information, enough for making backtraces in parts of the program that you don't plan to debug. This includes descriptions of functions and external variables, and line number tables, but no information about local variables.
-**-g2**: (This is the default when -g is specified.) Includes extra information, such as all the macro definitions present in the program. Some debuggers support macro expansion when you use -g2.
+**-g0**: Produces no debugging information.  
+**-g1**: Produces minimal information, enough for making backtraces in parts of the program that you don't plan to debug. This includes descriptions of functions and external variables, and line number tables, but no information about local variables.  
+**-g2**: (This is the default when -g is specified.) Includes extra information, such as all the macro definitions present in the program. Some debuggers support macro expansion when you use -g2.  
 **-g3**: Includes everything specified by -g2, as well as additional information such as macro definitions, to make debugging even more informative.
 So, -g3 includes more debugging information than -g, making it easier to debug your program in detail, but it will also make your binaries larger.
-Compiling with -g3 and using valgrind provides the best debugging result. You will be able to trace the error down precisely at the line number.
+Compiling with -g3 and using valgrind provides the best debugging result. You will be able to trace the error down precisely at the line number.  
 
 ### Optimization flags
 The flags you have mentioned are typically used to optimize your C/C++ code during compilation with GCC:
 
-**-Ofast**: This enables all -O3 optimizations (which includes -O2 and -O1). It also enables optimizations that are not valid for all standard-compliant programs. It turns on -ffast-math which is a set of optimizations for numerical code that may violate strict compliance with the C and C++ standards, but usually gives correct results.
+**-Ofast**: This enables all -O3 optimizations (which includes -O2 and -O1). It also enables optimizations that are not valid for all standard-compliant programs. It turns on -ffast-math which is a set of optimizations for numerical code that may violate strict compliance with the C and C++ standards, but usually gives correct results.  
 
-**-flto**: This stands for "Link Time Optimization". With LTO, GCC can optimize across the entire program, with visibility to all code at the same time. This can enable more aggressive optimizations, but can also increase compile time and use more memory during compilation.
+**-flto**: This stands for "Link Time Optimization". With LTO, GCC can optimize across the entire program, with visibility to all code at the same time. This can enable more aggressive optimizations, but can also increase compile time and use more memory during compilation.  
+ 
+**-march=native**: This tells GCC to generate code that is optimized for the host computer where the compile is happening. GCC will detect the specific type of CPU and its features (like additional instruction set extensions) and tune the generated code to make best use of them. This can make your program significantly faster on your machine, but the resulting binary may not work on a different machine with a different or older CPU.  
 
-**-march=native**: This tells GCC to generate code that is optimized for the host computer where the compile is happening. GCC will detect the specific type of CPU and its features (like additional instruction set extensions) and tune the generated code to make best use of them. This can make your program significantly faster on your machine, but the resulting binary may not work on a different machine with a different or older CPU.
-
-Please note that, while these flags can make your program faster, they are not a magic bullet. The actual impact on performance can vary widely depending on the specific code. It's also important to note that these flags make the build less portable, especially -march=native which may generate a binary that doesn't work on other machines. They can also make debugging more difficult because of the additional optimizations. As always with optimizations, you should measure the performance before and after applying these flags to see if they help for your specific case. Never use valgrind with an optimization supperior to -O1, otherwise you may encounter false positive, false negative, wrong line numbers for errors etc. Even -O1 can cause these issue although it's quite rare.
+Please note that, while these flags can make your program faster, they are not a magic bullet. The actual impact on performance can vary widely depending on the specific code. It's also important to note that these flags make the build less portable, especially -march=native which may generate a binary that doesn't work on other machines. They can also make debugging more difficult because of the additional optimizations. As always with optimizations, you should measure the performance before and after applying these flags to see if they help for your specific case. Never use valgrind with an optimization supperior to -O1, otherwise you may encounter false positive, false negative, wrong line numbers for errors etc. Even -O1 can cause these issue although it's quite rare.  
 
 ### Sanitize the Compilation with ASAN and UBSAN
 
